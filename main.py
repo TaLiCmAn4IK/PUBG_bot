@@ -10,6 +10,7 @@ from settings import tg_token, api_1, api_2, DISCORD_BOT_TOKEN, session, dp, cli
 from aiogram.enums import ParseMode
 from aiogram.types import Message, BotCommand
 from functions import start_telegram_bot, add_games_to_player, get_games_by_player_id, get_player_id, get_voice_channel_info
+from keep_alive import keep_alive
 
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
@@ -315,12 +316,19 @@ async def winrate_teammates_handler(message: types.Message):
         await message.answer(text="Нужно написать режим игры(solo, duo, squad)")
 
 async def main():
-    asyncio.create_task(client.start(DISCORD_BOT_TOKEN))  # Запуск Discord-бота
-    await start_telegram_bot()  # Запуск Telegram-бота
+    # Запуск Discord-бота в фоне
+    asyncio.create_task(client.start(DISCORD_BOT_TOKEN))
+
+    # Запуск Telegram-бота в фоне
+    asyncio.create_task(start_telegram_bot())
+
+    # Чтобы программа не завершалась
+    while True:
+        await asyncio.sleep(3600)
 
 if __name__ == '__main__':
+    keep_alive()
     try:
         asyncio.run(main())
     except KeyboardInterrupt:
         print("Бот выключен")
-
