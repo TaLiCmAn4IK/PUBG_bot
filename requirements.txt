@@ -1,0 +1,9 @@
+aiogram
+discord.py
+flask
+python-dotenv
+mysql-connector-python
+chicken-dinner
+pubg-python
+sqlalchemy
+pandas
