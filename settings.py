@@ -14,16 +14,15 @@ from aiogram.client.default import DefaultBotProperties
 from aiogram import Bot, Dispatcher, types
 from aiogram.enums import ParseMode
 
-api_key = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJqdGkiOiJiYjBmMjI5MC1kYThhLTAxM2QtYmUyOC00NjQ0ZDA0YjAzMzEiLCJpc3MiOiJnYW1lbG9ja2VyIiwiaWF0IjoxNzQxMDI2Mjk1LCJwdWIiOiJibHVlaG9sZSIsInRpdGxlIjoicHViZyIsImFwcCI6ImNsYW5fYm90In0.VP7mJuRRQEJd27HJrEdzEIq1VpCZ3DIOr7GrE0oyxy8"
-
-tg_token = "7397648711:AAFRcN2Rq-2fjrwftgXTi0UDRNlP-ny54bI"
-
 DISCORD_BOT_TOKEN = os.getenv("DISCORD_BOT_TOKEN")
+tg_token = os.getenv("tg_token")
+api_key = os.getenv("api_key")
+DATABASE_URL = os.getenv("DATABASE_URL")
 
 GUILD_ID = 627073760016465930
 
 # Подключение к MySQL
-DATABASE_URL = "mysql+mysqlconnector://root:ZyvctrUHgmkPUvkMQFoIyUvsnBOCEbeo@crossover.proxy.rlwy.net:25395/railway"
+DATABASE_URL = os.getenv("DATABASE_URL")
 engine = create_engine(DATABASE_URL)
 
 Base = declarative_base()
