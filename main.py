@@ -11,6 +11,7 @@ from aiogram.enums import ParseMode
 from aiogram.types import Message, BotCommand
 from functions import start_telegram_bot, add_games_to_player, get_games_by_player_id, get_player_id, get_voice_channel_info
 from keep_alive import keep_alive
+from my_bot import start_bot
 
 @dp.message(CommandStart())
 async def cmd_start(message: Message):
@@ -327,6 +328,7 @@ async def main():
         await asyncio.sleep(3600)
 
 if __name__ == '__main__':
+    asyncio.run(start_bot())
     keep_alive()
     try:
         asyncio.run(main())
